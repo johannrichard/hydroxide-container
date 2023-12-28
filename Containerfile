@@ -1,7 +1,8 @@
 FROM golang:alpine AS build
 
 ADD ./hydroxide /go/src/hydroxide
-RUN cd /go/src/hydroxide && GO111MODULE=on go build ./cmd/hydroxide
+WORKDIR /go/src/hydroxide 
+RUN GO111MODULE=on go build ./cmd/hydroxide
 
 FROM alpine:latest
 
